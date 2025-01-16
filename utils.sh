@@ -5,7 +5,9 @@ get_system_architecture() {
   case $1 in
     1) echo "x86_64-linux" ;;
     2) echo "aarch64-linux" ;;
-    3) read -p "Please enter your architecture (e.g., x86_64-linux): " ARCH
+    3) echo "x86_64-darwin" ;;
+    4) echo "aarch64-darwin" ;;
+    5) read -p "Please enter your architecture (e.g., x86_64-linux): " ARCH
        echo "$ARCH" ;;
     *) echo "Invalid option!" ;;
   esac
