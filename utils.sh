@@ -65,7 +65,7 @@ generate_flake_nix() {
     local PACKAGE=$3
 
     # Create the directory
-    DIR=~/generated_flakes
+    DIR=~/generated_flake_${LANG}yy
     mkdir -p "$DIR"
 
     # Create flake.nix with the minimal required content
