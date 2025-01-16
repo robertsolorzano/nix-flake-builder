@@ -82,6 +82,9 @@ generate_flake_nix() {
         pkgs.${LANG}
         nixpkgs.${PACKAGE}
       ];
+    shellHook = ''
+        "Welcome to your Nix Development shell"
+      '';
     };
   };
 }
