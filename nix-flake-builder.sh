@@ -37,7 +37,5 @@ SELECTED_PACKAGE=$(get_package_selection "$PACKAGE")
 
 generate_flake_nix $ARCH $LANG "$SELECTED_PACKAGE"
 
-echo "Your custom flake.nix has been generated!"
-
 # Restore terminal settings
 stty icanon
