@@ -28,16 +28,15 @@ A simple shell script that assists in generating custom Nix flake configurations
   
   outputs = { self, nixpkgs }: 
     let
-       pkgs = nixpkgs.legacyPackages.x86_64-linux;
+       pkgs = nixpkgs.legacyPackages;
     in
-
   {
-    devShell.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+    devShell.x86_64-linux = pkgs.x86_64-linux.mkShell {
       buildInputs = [
-        pkgs.python3
+        pkgs.x86_64-linux.python3
         nixpkgs.legacyPackages.x86_64-linux.python312Packages.jupyterlab
         nixpkgs.legacyPackages.x86_64-linux.python312Packages.pandas
-        nixpkgs.legacyPackages.x86_64-linux.python312Packages.matplotlib
+        nixpkgs.legacyPackages.x86_64-linux.python312Packages.numpy
       ];
       shellHook = ''
         "Welcome to your Nix Development shell"

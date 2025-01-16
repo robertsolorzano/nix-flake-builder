@@ -78,13 +78,12 @@ generate_flake_nix() {
   
   outputs = { self, nixpkgs }: 
     let
-       pkgs = nixpkgs.legacyPackages.${ARCH};
+       pkgs = nixpkgs.legacyPackages;
     in
-
   {
-    devShell.${ARCH} = nixpkgs.legacyPackages.${ARCH}.mkShell {
+    devShell.${ARCH} = pkgs.${ARCH}.mkShell {
       buildInputs = [
-        pkgs.${LANG}
+        pkgs.${ARCH}.${LANG}
         $(for PACKAGE in "${PACKAGES[@]}"; do echo "nixpkgs.${PACKAGE}"; done)
       ];
       shellHook = ''
