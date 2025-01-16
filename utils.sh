@@ -62,10 +62,11 @@ get_package_selection() {
 generate_flake_nix() {
     local ARCH=$1
     local LANG=$2
-    local PACKAGE=$3
+    shift 2  # Skip ARCH and LANG
+    local PACKAGES=("$@")
 
     # Create the directory
-    DIR=~/generated_flake_${LANG}yy
+    DIR=~/generated_flake_${LANG}
     mkdir -p "$DIR"
 
     # Create flake.nix with the minimal required content
@@ -82,9 +83,9 @@ generate_flake_nix() {
 
   {
     devShell.${ARCH} = nixpkgs.legacyPackages.${ARCH}.mkShell {
-      buildInputs = [ 
+      buildInputs = [
         pkgs.${LANG}
-        nixpkgs.${PACKAGE}
+        $(for PACKAGE in "${PACKAGES[@]}"; do echo "nixpkgs.${PACKAGE}"; done)
       ];
       shellHook = ''
         "Welcome to your Nix Development shell"
