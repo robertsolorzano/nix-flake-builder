@@ -70,10 +70,14 @@ generate_flake_nix() {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   
   outputs = { self, nixpkgs }: 
+    let
+       pkgs = nixpkgs.legacyPackages.${ARCH};
+    in
+
   {
     devShell.${ARCH} = nixpkgs.legacyPackages.${ARCH}.mkShell {
       buildInputs = [ 
-        nixpkgs.${LANG}
+        pkgs.${LANG}
         nixpkgs.${PACKAGE}
       ];
     };
