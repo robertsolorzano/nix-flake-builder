@@ -14,7 +14,7 @@ echo "2) aarch64-linux"
 echo "3) x86_64-darwin"
 echo "4) aarch64-darwiny"
 echo "5) Other (please type manually)"
-read -p "Select an option (1/2/3): " ARCH_CHOICE
+read -p "Select an option (1/2/3/4/5): " ARCH_CHOICE
 
 ARCH=$(get_system_architecture $ARCH_CHOICE)
 
