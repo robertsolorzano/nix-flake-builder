@@ -15,9 +15,6 @@ A simple shell script that assists in generating custom Nix flake configurations
 - `fzf` for fuzzy searching package names
 - `jq` for JSON parsing
 
-## Installation
-
-
 ## Example Output
 
 ```nix
