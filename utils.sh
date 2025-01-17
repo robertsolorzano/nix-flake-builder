@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Function to search for packages in the Nix package store
+# Search for packages in Nix store
 search_package() {
     local package_name=$1
     echo "Searching for package '${package_name}' in the Nix package store..."
     nix search nixpkgs "$package_name" --json | jq -r 'to_entries[] | "\(.key) - \(.value.description)"' || echo "No results found for '${package_name}'."
 }
 
-# Function to refine package selection and prompt the user
+# Refine package selection and prompt the user
 get_package_selection() {
     local package_name=$1
     local results
@@ -42,11 +42,8 @@ get_package_selection() {
 generate_flake_nix() {
     shift 1
     local PACKAGES=("$@")
-    # Create the directory
     DIR=~/generated_flake
     mkdir -p "$DIR"
-    
-    # Create flake.nix with the minimal required content
     cat > "${DIR}/flake.nix" <<'EOF'
 {
   description = "A simple system-aware Nix flake";
@@ -73,12 +70,12 @@ EOF
         echo "nixpkgs.${PACKAGE}" >> "${DIR}/flake.nix"
     done
 
-    # Continue the flake definition
+    # Continue with flake template
     cat >> "${DIR}/flake.nix" <<'EOF'
           ];
 
           shellHook = ''
-            export PS1="\[\033[1;32m\](dev)\[\033[0m\] $PS1"
+            export PS1="\[\033[1;32m\][nix-dev]$\[\033[0m\] "
 
             echo "Entering dev environment on ${system}"
           '';
