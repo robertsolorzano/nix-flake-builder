@@ -1,19 +1,41 @@
 # Nix Flake Builder
 
-A simple shell script that assists in generating custom Nix flake configurations. The script allows users to select system architecture, programming language/runtime, and packages to include in a `flake.nix` file. Multiple packages can be added, and the resulting `flake.nix` file is saved in a unique directory.
+This script allows you to generate a flake.nix file for a custom Nix development environment by selecting packages via fuzzy search. It interacts with the Nix package manager to create a tailored development shell configuration that can run on any supported system.
 
-## Features
+## Prerequisites
 
-- Choose system architecture (x86_64-linux, aarch64-linux, x86_64-darwin, aarch64-darwin, or custom).
-- Select a language/runtime (Python, Node.js, Ruby, Go, Java, Rust, or custom).
-- Search through Nix store to add multiple packages to the Nix flake configuration.
-- Automatically generates a `flake.nix` file with the selected configurations.
+Before running the script, make sure you have the following installed:
 
-## Requirements
+- fzf - Fuzzy finder used for searching packages.
+- jq - Command-line JSON processor.
 
-- Nix package manager or NixOs
-- `fzf` for fuzzy searching package names
-- `jq` for JSON parsing
+## Usage
+
+1. Run the script: Execute the script to begin interacting with the package search.
+```bash
+./nix-flake-builder.sh
+```
+2. Search for packages: The script will prompt you to enter the name of a package you want to search for. You can use fuzzy search to quickly find and select packages.
+
+3. Add packages: Once you find the desired package, select it, and it will be added to your list of packages. You can continue adding packages or finish the selection process.
+
+4. Generate flake.nix: After selecting all the required packages, the script will generate a flake.nix file in the ~/generated_flake directory. This file includes the selected packages and a development shell configuration.
+
+5. Enter development shell: To use the generated flake.nix, navigate to the ~/generated_flake directory and run the following command:
+
+```bash
+cd ~/generated_flake
+nix develop
+```
+This will drop you into the Nix development shell with the selected packages available.
+
+## Key Features
+
+- System-Aware: The script automatically detects your system type using Nix, ensuring the generated flake.nix works across any supported system, providing a seamless experience for users on different platforms.
+- Package Search: Fuzzy search through available Nix packages.
+- Dynamic Package List: Add multiple packages to the flake.nix file interactively.
+- Custom Development Shell: Generates a tailored Nix development shell configuration with your selected packages.
+- Colored Output: The script uses colored output to highlight status messages, making it easier to follow the process.
 
 ## Example Output
 
@@ -53,3 +75,7 @@ A simple shell script that assists in generating custom Nix flake configurations
     );
 }
 ```
+
+## License
+
+This project is licensed under the MIT License.
