@@ -5,13 +5,6 @@ source ./utils.sh
 
 stty -icanon
 
-# ARCH=$(get_system_architecture $ARCH_CHOICE)
-
-# # Step 2: Choose the language/runtime (with fuzzy search support)
-# echo "Please choose a language/runtime (Enter corresponding number or type custom language):"
-# LANGUAGES=("python3" "nodejs" "ruby" "go" "java" "rust")
-# LANG=$(select_language "${LANGUAGES[@]}")
-
 # Step 3: Search for packages (fuzzy search)
 PACKAGE_LIST=()
 

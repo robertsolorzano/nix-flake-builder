@@ -1,27 +1,5 @@
 #!/bin/bash
 
-# # Function to get system architecture
-# get_system_architecture() {
-#   case "$(uname -m)" in 
-#     x86_64) echo "x86_64-linux" ;; 
-#     aarch64) echo "aarch64-linux" ;; 
-#     arm64) echo "aarch64-darwin" ;; 
-#     i386) echo "x86_64-darwin" ;; # Not entriely sure on this one
-#     *) echo "unknown" ;; 
-#   esac 
-# } 
-
-# # Get system architecture 
-# ARCH=$(get_system_architecture)
-# echo "Your system is ${ARCH}"
-
-# # Function to map language choice to language
-# select_language() {
-#   # Use fzf for fuzzy search in the language options
-#   SELECTED_LANG=$(echo "$@" | tr ' ' '\n' | fzf --prompt "Select language/runtime: " --height 20)
-#   echo "$SELECTED_LANG"
-# }
-
 # Function to search for packages in the Nix package store
 search_package() {
     local package_name=$1
@@ -62,17 +40,14 @@ get_package_selection() {
 
 
 generate_flake_nix() {
-    # local ARCH=$1
-    # local LANG=$2
-    shift 2  # Skip ARCH and LANG
+    shift 1
     local PACKAGES=("$@")
-
     # Create the directory
     DIR=~/generated_flake
     mkdir -p "$DIR"
-
+    
     # Create flake.nix with the minimal required content
-    cat > "${DIR}/flake.nix" <<EOF
+    cat > "${DIR}/flake.nix" <<'EOF'
 {
   description = "A simple system-aware Nix flake";
 
@@ -91,13 +66,20 @@ generate_flake_nix() {
       {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-        $(for PACKAGE in "${PACKAGES[@]}"; do echo "nixpkgs.${PACKAGE}"; done)
+EOF
+
+    # Add packages
+    for PACKAGE in "${PACKAGES[@]}"; do
+        echo "nixpkgs.${PACKAGE}" >> "${DIR}/flake.nix"
+    done
+
+    # Continue the flake definition
+    cat >> "${DIR}/flake.nix" <<'EOF'
           ];
 
           shellHook = ''
-            # Add (dev) to the start of PS1
             export PS1="\[\033[1;32m\](dev)\[\033[0m\] $PS1"
-            
+
             echo "Entering dev environment on ${system}"
           '';
         };
@@ -105,6 +87,5 @@ generate_flake_nix() {
     );
 }
 EOF
-
     echo "Your flake.nix has been saved to ${DIR}/flake.nix"
 }
