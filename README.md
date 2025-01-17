@@ -39,7 +39,7 @@ This opens a development shell with all the packages you selected.
 - Custom Development Shell: The script generates a `flake.nix` with the exact tools you need.
 - Clear Process: Colored output makes it easy to follow along.
 
-## Example `flake.nix``
+## Example `flake.nix`
 Here’s what a generated flake might look like:
 ```nix
 {
