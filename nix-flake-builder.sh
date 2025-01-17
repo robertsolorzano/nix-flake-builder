@@ -5,15 +5,6 @@ source ./utils.sh
 
 stty -icanon
 
-# Step 1: Get system architecture
-echo "Please select your system architecture:"
-echo "1) x86_64-linux"
-echo "2) aarch64-linux"
-echo "3) x86_64-darwin"
-echo "4) aarch64-darwin"
-echo "5) Other (please type manually)"
-read -p "Select an option (1/2/3/4/5): " ARCH_CHOICE
-
 ARCH=$(get_system_architecture $ARCH_CHOICE)
 
 # Step 2: Choose the language/runtime (with fuzzy search support)

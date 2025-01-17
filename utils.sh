@@ -2,16 +2,18 @@
 
 # Function to get system architecture
 get_system_architecture() {
-  case $1 in
-    1) echo "x86_64-linux" ;;
-    2) echo "aarch64-linux" ;;
-    3) echo "x86_64-darwin" ;;
-    4) echo "aarch64-darwin" ;;
-    5) read -p "Please enter your architecture (e.g., x86_64-linux): " ARCH
-       echo "$ARCH" ;;
-    *) echo "Invalid option!" ;;
-  esac
-}
+  case "$(uname -m)" in 
+    x86_64) echo "x86_64-linux" ;; 
+    aarch64) echo "aarch64-linux" ;; 
+    arm64) echo "aarch64-darwin" ;; 
+    i386) echo "x86_64-darwin" ;; # Not entriely sure on this one
+    *) echo "unknown" ;; 
+  esac 
+} 
+
+# Get system architecture 
+ARCH=$(get_system_architecture)
+echo "Your system is ${ARCH}"
 
 # Function to map language choice to language
 select_language() {
