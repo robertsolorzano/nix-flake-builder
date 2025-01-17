@@ -4,38 +4,60 @@ Thank you for considering contributing to the Nix Flake Builder project. We welc
 
 ## How to Contribute
 
-1. **Fork the repository**: Click the "Fork" button at the top of the repository page to create your own copy of the project.
-2. **Clone your fork**: 
-   ```bash
-   git clone https://github.com/<your-username>/nix-flake-builder.git
-   cd nix-flake-builder
-3. **Create a new branch**: It's a good idea to create a separate branch for your work.
+1. **Fork the Repository**
+Click the "Fork" button at the top of the repository to create a copy under your GitHub account.
+
+2. **Clone Your Fork**
+Clone your forked repository to your local machine:
 
 ```bash
-git checkout -b feature-branch
+git clone https://github.com/<your-username>/nix-flake-builder.git
+cd nix-flake-builder
 ```
-4. **Make changes**: Make your changes or additions, following the project's coding standards and guidelines.
-5. **Commit your changes**: Write clear, concise commit messages. Include the issue number if applicable.
+
+3. **Create a Branch**
+Create a new branch for your changes. Use a meaningful name that reflects the purpose of the branch:
+
 ```bash
-git commit -m "Add feature: <description>"
+git checkout -b my-feature-branch
 ```
-6. **Push your changes**:
+
+4. **Make Your Changes**
+Implement your changes or additions. Be sure to follow the project's coding conventions and ensure your work aligns with the overall design.
+
+5. **Test Your Changes**
+Before committing, test your changes to ensure everything works as expected. Add tests if applicable.
+
+6. **Commit Your Changes**
+Write clear, descriptive commit messages. If your changes fix an issue, reference it in the commit message (e.g., Fix #42):
+
 ```bash
-git push origin feature-branch
+git commit -m "Add new feature: <short description>"
 ```
-7. **Create a pull request**: Open a pull request to be reviewed and if approved will merge your changes into the `main` branch.
+
+7. **Push Your Changes**
+Push the branch with your changes to your fork:
+
+```bash
+git push origin my-feature-branch
+```
+
+8. **Open a Pull Request**
+Go to the original repository and open a pull request (PR) from your branch. Provide a concise and descriptive summary of your changes in the PR description.
 
 ## Reporting Issues
 
-If you encounter any issues or bugs, please open a GitHub issue. Make sure to include:
+If you run into problems, feel free to open an issue in the repository. To help us understand and resolve the issue quickly, please include:
 
-- A clear description of the problem.
+- A detailed description of the problem.
 - Steps to reproduce the issue.
-- The environment you're running (OS, version, etc.).
-- Any relevant logs or error messages.
+- Information about your environment (e.g., operating system, Nix version).
+- Any relevant error messages or logs.
 
-## License
+## License Agreement
 
-By contributing to this project, you agree that your contributions will be licensed under the MIT License. This means that any code, documentation, or other contributions you make to this project will be released under the MIT License, allowing others to use, modify, and distribute your work with proper attribution.
+By contributing to this repository, you agree that your contributions will be licensed under the MIT License. This ensures that the project, along with your contributions, remains open and accessible to the community.
 
-For more details, please refer to the full [LICENSE](LICENSE) file.
+For more details, check out the License [here](LICENSE).
+
+Thank you for contributing to Nix Flake Builder! 🚀
