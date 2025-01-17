@@ -77,10 +77,6 @@ This will drop you into the Nix development shell with the selected packages ava
 }
 ```
 
-## Version
-
-Currently under development. No official version yet. Stay tuned for updates! The project is actively being worked on, and future releases will be available once it reaches a stable state.
-
 ## License
 
 This project is licensed under the MIT License.
