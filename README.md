@@ -79,3 +79,4 @@ This will drop you into the Nix development shell with the selected packages ava
 ## License
 
 This project is licensed under the MIT License.
+[LICENSE](LICENSE)
