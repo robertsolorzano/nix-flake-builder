@@ -72,7 +72,7 @@ EOF
 
     # Add packages
     for PACKAGE in "${PACKAGES[@]}"; do
-        echo "            ${PACKAGE}" >> "${DIR}/flake.nix"
+        echo "nixpkgs.${PACKAGE}" >> "${DIR}/flake.nix"
     done
 
     # Complete the flake.nix
@@ -80,7 +80,7 @@ EOF
           ];
 
           shellHook = ''
-            export PS1="\[\033[1;32m\][nix-dev]\[\033[0m\] \[\033[1;34m\]\w\[\033[0m\]$ "
+            export PS1="\[\033[1;34m\][nix-dev:\w]$ \[\033[0m\]"
             echo -e "\033[1;32m==> Entering Nix development shell on ''${system}\033[0m"
             echo -e "\033[1;34mPackages available:\033[0m"
             echo ''${buildInputs} | tr ' ' '\n' | sed 's/^/  - /'
