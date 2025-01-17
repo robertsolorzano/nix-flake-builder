@@ -1,4 +1,5 @@
-# Nix Flake Builder
+# Nix Flake Builder [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+
 
 This script allows you to generate a flake.nix file for a custom Nix development environment by selecting packages via fuzzy search. It interacts with the Nix package manager to create a tailored development shell configuration that can run on any supported system.
 
@@ -75,6 +76,10 @@ This will drop you into the Nix development shell with the selected packages ava
     );
 }
 ```
+
+## Version
+
+Currently under development. No official version yet. Stay tuned for updates! The project is actively being worked on, and future releases will be available once it reaches a stable state.
 
 ## License
 

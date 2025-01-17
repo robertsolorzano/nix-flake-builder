@@ -1,6 +1,6 @@
 # Contributing to Nix Flake Builder
 
-Thank you for your interest in contributing to the Nix Flake Builder project! We welcome all kinds of contributions, from bug fixes to feature additions.
+Thank you for considering contributing to the Nix Flake Builder project. We welcome contributions of all types, from bug fixes to feature enhancements. If you’d like to get involved, please follow the guidelines below to ensure smooth collaboration.
 
 ## How to Contribute
 
